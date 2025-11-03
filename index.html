@@ -4,137 +4,171 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Omnia Control Inc. | Fumigación Certificada en Ciudad de Panamá</title>
-  <meta name="description" content="Empresa certificada en control de plagas. Fumigación para hogares, restaurantes, hoteles, hospitales, bodegas, plantas de alimentos, granos y contenedores en Ciudad de Panamá.">
-  <link rel="icon" href="logo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <meta name="description" content="Empresa certificada en control y manejo de plagas. Fumigación profesional para hogares, restaurantes, hoteles, hospitales, bodegas, plantas de alimentos, granos y contenedores en Ciudad de Panamá.">
+  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
     :root{
-      --rojo:#d32f2f; --rojo-osc:#b71c1c; --dorado:#d4a43a;
-      --dorado-osc:#b08122; --gris:#f4f4f6; --blanco:#fff;
-      --osc:#1f1f1f; --radius:16px;
+      --rojo:#d32f2f; --rojo-osc:#b71c1c;
+      --dorado:#d4a43a; --dorado-osc:#b08122;
+      --gris:#f5f6f7; --blanco:#fff; --osc:#1f1f1f;
+      --radius:16px;
     }
     *{box-sizing:border-box}
     html,body{margin:0}
     body{font-family:Poppins,system-ui,Segoe UI,Roboto,sans-serif;background:var(--gris);color:#333;scroll-behavior:smooth}
 
-    /* NAVBAR */
-    .topbar{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.1) blur(6px);
-      background:rgba(255,255,255,.95); border-bottom:1px solid #eee}
-    .nav{max-width:1200px;margin:auto;display:flex;align-items:center;gap:16px;padding:10px 16px}
-    .nav img{height:42px}
-    .brand{font-weight:800;color:var(--rojo-osc);letter-spacing:.3px}
-    .links{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap}
-    .links a{color:var(--rojo-osc);text-decoration:none;font-weight:600}
-    .links a:hover{color:#000}
-    .ig-head{margin-left:8px}
-    .ig-head a{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
-      color:#fff; padding:8px 12px; border-radius:999px; font-weight:700; text-decoration:none}
-    .ig-head a i{margin-right:6px}
-    
-    /* ====== INSTAGRAM BADGE (simple y estable) ====== */
+    /* =========== NAVBAR + MENU MÓVIL =========== */
+    .topbar{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96); border-bottom:1px solid #eee; backdrop-filter: blur(6px)}
+    .nav{max-width:1200px;margin:auto;display:flex;align-items:center;gap:12px;padding:10px 14px}
+    .nav img{height:40px}
+    .brand{font-weight:800;color:var(--rojo-osc);letter-spacing:.2px;white-space:nowrap}
+
+    .menu{display:flex;gap:14px;flex-wrap:wrap;margin-left:18px}
+    .menu a{color:var(--rojo-osc);text-decoration:none;font-weight:700}
+
+    .menu-btn{display:none; background:#fff; border:1px solid #eee; border-radius:10px; padding:8px 10px; cursor:pointer}
+    .menu-btn i{font-size:20px}
+
+    .ig-head{margin-left:auto}
     .ig-chip{
       background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
-      color:#fff;
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 16px;
-      border-radius:999px;
-      text-decoration:none;       /* sin subrayado */
-      font-weight:800; line-height:1;
-      box-shadow:0 8px 20px rgba(0,0,0,.18);
+      color:#fff; display:inline-flex; align-items:center; gap:8px;
+      padding:10px 16px; border-radius:999px; text-decoration:none;
+      font-weight:800; line-height:1; box-shadow:0 8px 20px rgba(0,0,0,.18);
       transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
+      max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-    .ig-chip:hover{ transform:translateY(-2px); filter:saturate(1.06); box-shadow:0 12px 28px rgba(0,0,0,.22); }
-    .ig-chip:active{ transform:translateY(1px) scale(.98); }
-    .ig-chip i{ font-size:18px; }
+    .ig-chip:hover{ transform:translateY(-2px); filter:saturate(1.06); box-shadow:0 12px 28px rgba(0,0,0,.22)}
+    .ig-chip:active{ transform:translateY(1px) scale(.98)}
+    .ig-chip i{ font-size:18px }
+    .ig-inmenu{display:none}
 
-    /* Opcional: botón flotante en móvil (aparece además del de la barra) */
-    @media (max-width:640px){
-      .ig-float{ position:fixed; bottom:82px; right:14px; z-index:60; }
+    @media (max-width: 900px){
+      .ig-head{display:none}
+      .menu-btn{display:inline-flex; margin-left:auto}
+      .menu{
+        position: fixed; left:0; right:0; top:64px;
+        background:#fff; border-top:1px solid #eee;
+        box-shadow:0 14px 30px rgba(0,0,0,.12);
+        display:none; flex-direction:column; gap:8px; padding:12px 14px; z-index:49;
+      }
+      .menu.open{display:flex}
+      .menu a{
+        background:#fff; border:1px solid #eee;
+        padding:12px 14px; border-radius:12px; color:var(--rojo-osc);
+      }
+      .ig-inmenu{display:inline-flex; margin-top:6px}
+      .ig-chip{ padding:9px 12px; font-size:.95rem }
     }
 
-    /* Asegurar que NINGÚN botón/enlace se subraye */
-    a, .btn { text-decoration:none; }
-
-    
-    /* HERO */
+    /* =========== HERO =========== */
     .hero{position:relative; color:#fff; text-align:center;
       background:linear-gradient(110deg, rgba(179,2,2,.88), rgba(211,47,47,.88)), url('fumigacion-panama.jpg') center/cover no-repeat}
-    .hero .wrap{max-width:1100px;margin:auto;padding:80px 18px}
-    .hero .mini-logo{height:170px; filter:drop-shadow(0 2px 6px rgba(0,0,0,.35)); opacity:.95}
-    .hero h1{font-size:clamp(28px,4vw,46px);margin:10px 0 8px}
+    .hero .wrap{max-width:1100px;margin:auto;padding:70px 16px}
+    .mini-logo{height:64px; filter:drop-shadow(0 2px 6px rgba(0,0,0,.35)); opacity:.95}
+    .hero h1{font-size:clamp(26px,4vw,44px);margin:10px 0 8px}
     .hero p{max-width:860px;margin:10px auto 24px;opacity:.98}
-    .badges{margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
-    .badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);padding:8px 12px;border-radius:999px;font-size:.92rem;display:flex;align-items:center;gap:10px}
 
-    /* BUTTONS (links sin subrayado + animaciones) */
+    .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     .btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;border-radius:999px;
       padding:12px 22px;font-weight:800;letter-spacing:.2px;text-decoration:none; user-select:none;
       box-shadow:0 6px 14px rgba(0,0,0,.18); transition:transform .12s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease}
-    .btn:focus{outline:2px solid rgba(255,255,255,.5); outline-offset:2px}
     .btn:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(0,0,0,.22)}
     .btn:active{transform:translateY(1px) scale(.98)}
     .btn.wsp{background:#25d366;color:#fff}
     .btn.out{background:transparent;color:#fff;border:1.8px solid rgba(255,255,255,.85)}
-    .btn.gold{background:linear-gradient(135deg,var(--dorado),var(--dorado-osc)); color:#fff}
-    .btn a{color:inherit; text-decoration:none}
+    .badges{margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+    .badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);padding:8px 12px;border-radius:999px;font-size:.92rem;display:flex;align-items:center;gap:10px}
 
-    section{max-width:1200px;margin:0 auto;padding:60px 18px}
-    h2.sec{color:var(--rojo-osc);text-align:center;margin:0 0 18px}
-    p.sub{color:#555;text-align:center;max-width:900px;margin:0 auto 26px}
+    /* =========== SECTIONS =========== */
+    section{max-width:1200px;margin:0 auto;padding:56px 16px}
+    h2.sec{color:var(--rojo-osc);text-align:center;margin:0 0 16px}
+    p.sub{color:#555;text-align:center;max-width:900px;margin:0 auto 24px}
 
-    /* GRID CARDS */
-    .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .card{background:var(--blanco);border-radius:var(--radius);padding:22px;box-shadow:0 8px 30px rgba(0,0,0,.06);transition:.25s transform,.25s border,.25s box-shadow}
+    /* =========== CARDS GRID =========== */
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .card{background:var(--blanco);border-radius:var(--radius);padding:20px;box-shadow:0 8px 30px rgba(0,0,0,.06);transition:.25s transform,.25s border,.25s box-shadow}
     .card:hover{transform:translateY(-5px); border:1px solid var(--dorado); box-shadow:0 14px 32px rgba(212,164,58,.22)}
-    .card .ico{font-size:28px;color:var(--rojo)}
+    .card .ico{font-size:26px;color:var(--rojo)}
     .card h3{margin:10px 0;color:var(--rojo-osc)}
-    .pill{display:inline-block;background:#fff6e6;border-left:5px solid var(--dorado);padding:8px 12px;border-radius:10px;margin:8px 0}
+    .card, .card h3{overflow-wrap:anywhere}
 
-    /* PROCESS timeline con flechas */
-    .flow{display:grid;gap:16px}
-    .step{display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:flex-start; background:#fff;border-radius:14px;padding:16px;border:1px dashed #eee;position:relative}
-    .step:nth-child(odd){background:linear-gradient(0deg,#fff,#fff); border-color:#ffe3a8}
-    .step:nth-child(even){background:linear-gradient(0deg,#fff,#fff); border-color:#ffcdd2}
-    .num{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--dorado);color:#fff;font-weight:800}
-    .arrow{position:absolute; right:14px; top:50%; transform:translateY(-50%); color:var(--dorado-osc)}
-    .step:nth-child(even) .num{background:var(--rojo)}
-    .step:nth-child(even) .arrow{color:var(--rojo-osc)}
+    .pill{display:inline-block;background:#fff6e6;border-left:5px solid var(--dorado);padding:6px 10px;border-radius:10px;margin:8px 0}
 
-    /* PLANS */
-    .plans{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .plan{background:#fff;border-radius:16px;padding:22px;border:2px solid #eee; transition:.25s}
+    /* =========== PROCESO VERTICAL FLECHAS =========== */
+    .vflow{max-width:900px;margin:0 auto}
+    .vstep{
+      display:grid; grid-template-columns:56px 1fr; gap:12px; align-items:flex-start;
+      background:#fff; border:1px solid #eee; border-radius:16px; padding:16px; position:relative;
+      box-shadow:0 8px 24px rgba(0,0,0,.05)
+    }
+    .vnum{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+      background:var(--dorado); color:#fff; font-weight:800}
+    .vstep:nth-child(odd) .vnum{background:var(--rojo)}
+    .vtext b{color:var(--rojo-osc)}
+    .v-arrow{display:grid; place-items:center; height:40px}
+    .v-arrow span{
+      width:4px; height:100%; background:linear-gradient(180deg,var(--dorado),var(--rojo));
+      position:relative; border-radius:999px; animation:flowDown 2.2s linear infinite; background-size:100% 200%;
+    }
+    .v-arrow span::after{
+      content:""; position:absolute; bottom:-6px; left:50%; transform:translateX(-50%);
+      border-left:8px solid transparent; border-right:8px solid transparent; border-top:10px solid var(--rojo);
+    }
+    @keyframes flowDown{0%{background-position:0 0}100%{background-position:0 200%}}
+
+    /* =========== PLANS =========== */
+    .plans{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .plan{background:#fff;border-radius:16px;padding:20px;border:2px solid #eee; transition:.25s}
     .plan:hover{border-color:var(--dorado); box-shadow:0 10px 30px rgba(212,164,58,.18)}
     .plan h3{margin:6px 0;color:var(--rojo-osc)}
-    .price{font-size:24px;font-weight:800;color:var(--rojo)}
+    .price{font-size:22px;font-weight:800;color:var(--rojo)}
     .plan ul{padding-left:18px;margin:12px 0}
     .plan li{margin:8px 0}
     .best{border-color:var(--dorado)}
 
-    /* FAQ */
-    details{background:#fff;border-radius:12px;padding:14px 18px;margin:10px 0;border:1px solid #eee}
+    /* =========== FAQ =========== */
+    details{background:#fff;border-radius:12px;padding:14px 16px;margin:10px 0;border:1px solid #eee}
     summary{cursor:pointer;font-weight:700;color:var(--rojo-osc)}
     details[open]{border-color:var(--dorado)}
     details p{margin-top:8px;color:#444}
 
-    /* FORM */
-    .formwrap{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}
+    /* =========== FORM =========== */
+    .formwrap{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
     @media (max-width:920px){.formwrap{grid-template-columns:1fr}}
-    form{background:#fff;border-radius:18px;padding:22px;border:1px solid #eee}
+    form{background:#fff;border-radius:18px;padding:20px;border:1px solid #eee}
     label{display:block;font-weight:600;margin:10px 0 6px}
     input,select,textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:12px;font:inherit}
-    textarea{min-height:120px;resize:vertical}
+    textarea{min-height:110px;resize:vertical}
     .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
     .hint{font-size:.9rem;color:#666}
-    .infoCard{background:#fff;border-radius:18px;padding:22px;border:1px solid #eee}
+    .infoCard{background:#fff;border-radius:18px;padding:20px;border:1px solid #eee}
+    .formwrap .btn.out{ color:var(--rojo-osc); border-color:var(--rojo-osc); background:#fff }
+    .formwrap .btn.out:hover{ background:#fff3f3 }
 
-    /* MAP */
+    /* =========== GALERÍA =========== */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px}
+    .gallery img{width:100%;aspect-ratio:1.3/1;object-fit:cover;border-radius:12px; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,.08)}
+    dialog.gallery-view{border:none;border-radius:14px;padding:0;max-width:min(92vw,960px)}
+    dialog::backdrop{background:rgba(0,0,0,.6)}
+    .viewer{position:relative}
+    .viewer img{width:100%;max-height:80vh;object-fit:contain;border-radius:14px}
+    .close-view{position:absolute;top:8px;right:8px;border:0;border-radius:999px;background:#fff;padding:8px 10px;cursor:pointer;font-weight:800}
+
+    /* =========== CLIENTES =========== */
+    .clients{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:18px;align-items:center}
+    .client{background:#fff;border:1px solid #eee;border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:center;min-height:80px}
+    .client img{max-height:40px; max-width:100%; object-fit:contain}
+
+    /* =========== MAP =========== */
     .map-wrap{background:#fff;border-radius:18px;padding:10px;border:1px solid #eee}
 
-    /* FOOTER */
+    /* =========== FOOTER =========== */
     footer{background:var(--rojo-osc);color:#fff;margin-top:40px}
-    .foot{max-width:1200px;margin:auto;padding:36px 18px;display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:22px}
+    .foot{max-width:1200px;margin:auto;padding:30px 16px;display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:18px}
     @media (max-width:860px){.foot{grid-template-columns:1fr}}
     footer a{color:#fff;text-decoration:none}
     .copy{background:#8a1717;text-align:center;padding:10px 14px;font-size:.92rem}
@@ -145,31 +179,39 @@
 <!-- NAV -->
 <div class="topbar">
   <div class="nav">
-    <!-- LOGO: coloca tu archivo como logo.png en la misma carpeta -->
     <img src="logo.png" alt="Omnia Control Inc.">
     <div class="brand">Omnia Control Inc.</div>
-    <div class="links">
+
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="menu" id="menu">
       <a href="#servicios">Servicios</a>
       <a href="#industrias">Industrias</a>
       <a href="#proceso">Proceso</a>
       <a href="#plagas">Plagas</a>
       <a href="#planes">Planes</a>
       <a href="#cert">Certificaciones</a>
+      <a href="#galeria">Galería</a>
+      <a href="#clientes">Clientes</a>
       <a href="#contacto">Contacto</a>
-    </div>
-    <div class="ig-head">
-      <a class="ig-chip" href="https://instagram.com/omniacontrol" target="_blank" rel="noopener" aria-label="Instagram Omnia Control">
-        <i class="fa-brands fa-instagram"></i>
-        @omniacontrol
+      <a class="ig-chip ig-inmenu" href="https://instagram.com/omniacontrol" target="_blank" rel="noopener">
+        <i class="fa-brands fa-instagram"></i> @omniacontrol
       </a>
-   </div>
+    </nav>
 
+    <div class="ig-head">
+      <a class="ig-chip" href="https://instagram.com/omniacontrol" target="_blank" rel="noopener">
+        <i class="fa-brands fa-instagram"></i> @omniacontrol
+      </a>
+    </div>
+  </div>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <!-- Logo en hero (opcional) -->
     <img class="mini-logo" src="logo.png" alt="Omnia Control">
     <h1>Fumigación Certificada en Ciudad de Panamá</h1>
     <p>Soluciones profesionales para hogares, restaurantes, hoteles, hospitales, bodegas, plantas de alimentos, granos y contenedores. <b>Atención rápida, productos aprobados por autoridades y reportes listos para auditorías.</b></p>
@@ -188,85 +230,104 @@
 <!-- SERVICIOS -->
 <section id="servicios">
   <h2 class="sec">Servicios de Fumigación y Control de Plagas</h2>
-  <p class="sub">Operamos en <b>Ciudad de Panamá</b> y áreas cercanas. Metodología de <b>Manejo Integrado de Plagas (MIP)</b>: inspección, identificación, control físico/químico, prevención y seguimiento.</p>
+  <p class="sub">Metodología de <b>Manejo Integrado de Plagas (MIP)</b>: inspección, identificación, control físico/químico, prevención y seguimiento. Operamos en <b>Ciudad de Panamá</b> y áreas cercanas.</p>
   <div class="grid">
-    <div class="card"><div class="ico"><i class="fa-solid fa-house"></i></div><h3>Fumigación Residencial</h3><p>Cucarachas, hormigas, mosquitos, pulgas, garrapatas, roedores y más. Tratamientos seguros con protocolos de ventilación y reingreso.</p><div class="pill">Visita puntual o plan trimestral</div></div>
-    <div class="card"><div class="ico"><i class="fa-solid fa-store"></i></div><h3>Comercios & Restaurantes</h3><p>Control en cocinas, cámaras frías y almacenes. Documentación para inspecciones sanitarias, BPM y auditorías.</p><div class="pill">Programas mensuales</div></div>
-    <div class="card"><div class="ico"><i class="fa-solid fa-industry"></i></div><h3>Industrial & Alimentaria</h3><p>Plantas de proceso y empaques. Estaciones cebaderas, trampas de luz y registros con bitácoras.</p></div>
-    <div class="card"><div class="ico"><i class="fa-solid fa-truck-ramp-box"></i></div><h3>Granos y Contenedores</h3><p>Fumigación de granos almacenados y desinsectación de contenedores con certificación de servicio para exportación.</p></div>
-    <div class="card"><div class="ico"><i class="fa-solid fa-hospital"></i></div><h3>Áreas Sensibles</h3><p>Hospitales, clínicas y laboratorios. Bioseguridad y productos específicos sin afectar operación.</p></div>
+    <div class="card"><div class="ico"><i class="fa-solid fa-house"></i></div><h3>Fumigación Residencial</h3><p>Cucarachas, hormigas, mosquitos, pulgas, garrapatas, roedores y más. Tratamientos seguros con protocolos de ventilación y reingreso.</p><div class="pill">Puntual o plan trimestral</div></div>
+    <div class="card"><div class="ico"><i class="fa-solid fa-store"></i></div><h3>Comercios & Restaurantes</h3><p>Cocinas, cámaras frías y almacenes. Documentación para inspecciones sanitarias, BPM y auditorías.</p></div>
+    <div class="card"><div class="ico"><i class="fa-solid fa-industry"></i></div><h3>Industrial & Alimentaria</h3><p>Estaciones cebaderas, trampas de luz y registros con bitácoras.</p></div>
+    <div class="card"><div class="ico"><i class="fa-solid fa-truck-ramp-box"></i></div><h3>Granos y Contenedores</h3><p>Fumigación de granos almacenados y desinsectación de contenedores con certificación.</p></div>
+    <div class="card"><div class="ico"><i class="fa-solid fa-hospital"></i></div><h3>Áreas Sensibles</h3><p>Hospitales, clínicas y laboratorios. Bioseguridad y productos específicos.</p></div>
     <div class="card"><div class="ico"><i class="fa-solid fa-seedling"></i></div><h3>Opciones Ecológicas</h3><p>Gel baits, trampas, exclusión y sellado. Bajo impacto ambiental.</p></div>
-    <div class="card"><div class="ico"><i class="fa-solid fa-clipboard-check"></i></div><h3>Reportes & Auditoría</h3><p>Mapas de puntos de control, MSDS, evidencias fotográficas y recomendaciones correctivas.</p></div>
-    <div class="card"><div class="ico"><i class="fa-solid fa-bug-slash"></i></div><h3>Termitas & Maderas</h3><p>Barreras químicas, perforación controlada y seguimiento semestral.</p></div>
+    <div class="card"><div class="ico"><i class="fa-solid fa-clipboard-check"></i></div><h3>Reportes & Auditoría</h3><p>Mapas, MSDS y evidencias fotográficas.</p></div>
+    <div class="card"><div class="ico"><i class="fa-solid fa-bug-slash"></i></div><h3>Termitas & Maderas</h3><p>Barreras químicas, perforación y seguimiento semestral.</p></div>
   </div>
 </section>
 
-<!-- INDUSTRIAS (8) -->
+<!-- INDUSTRIAS -->
 <section id="industrias">
   <h2 class="sec">Industrias que Atendemos</h2>
   <p class="sub">Programas a la medida y normativa vigente en Panamá.</p>
   <div class="grid">
-    <div class="card"><h3><i class="fa-solid fa-utensils"></i> Restaurantes & Food Trucks</h3><p>BPM, control en cocina caliente/fría, manejo de grasas y puntos críticos.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-cart-shopping"></i> Retail & Supermercados</h3><p>Inspección perimetral, trampas de monitoreo y registros para auditor.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-hotel"></i> Hoteles</h3><p>Habitaciones, áreas comunes; control de chinches y cucaracha alemana.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-ship"></i> Puertos & Logística</h3><p>Contenedores, bodegas, patios. Coordinación operativa y ventanas de servicio.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-school"></i> Escuelas & Oficinas</h3><p>Aplicaciones fuera de horario y comunicación preventiva al personal.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-hospital-user"></i> Salud</h3><p>Clínicas y laboratorios con protocolos estrictos de bioseguridad.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-warehouse"></i> Bodegas & Depósitos</h3><p>Roedores y rastreros con estaciones trazables y reportes.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-house-chimney"></i> Residencial & PH</h3><p>Planes para torres y conjuntos con tarifas preferenciales por volumen.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-utensils"></i> Restaurantes & Food Trucks</h3><p>BPM, puntos críticos y manejo de grasas.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-cart-shopping"></i> Retail & Supermercados</h3><p>Monitoreo y registros para auditor.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-hotel"></i> Hoteles</h3><p>Habitaciones y áreas comunes; control de chinches.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-ship"></i> Puertos & Logística</h3><p>Contenedores, bodegas y patios.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-school"></i> Escuelas & Oficinas</h3><p>Aplicaciones fuera de horario.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-hospital-user"></i> Salud</h3><p>Clínicas y laboratorios con bioseguridad.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-warehouse"></i> Bodegas & Depósitos</h3><p>Roedores y rastreros con estaciones trazables.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-house-chimney"></i> Residencial & PH</h3><p>Planes para torres y conjuntos.</p></div>
   </div>
 </section>
 
-<!-- PROCESO DINÁMICO -->
+<!-- PROCESO VERTICAL CON FLECHAS -->
 <section id="proceso">
   <h2 class="sec">Nuestro Proceso (MIP)</h2>
-  <p class="sub">Metodología de <b>Manejo Integrado de Plagas</b> para resultados duraderos.</p>
-  <div class="flow">
-    <div class="step"><div class="num">1</div><div><b>Inspección</b><br>Levantamiento de información, especies, rutas de ingreso y riesgos.<i class="fa-solid fa-angles-right arrow"></i></div></div>
-    <div class="step"><div class="num">2</div><div><b>Plan de Acción</b><br>Selección de técnicas (físicas/químicas), productos, dosis y cronograma.<i class="fa-solid fa-angles-right arrow"></i></div></div>
-    <div class="step"><div class="num">3</div><div><b>Ejecución Segura</b><br>Aplicación por técnicos certificados, señalización y tiempos de reingreso.<i class="fa-solid fa-angles-right arrow"></i></div></div>
-    <div class="step"><div class="num">4</div><div><b>Seguimiento</b><br>Monitoreo con trampas, bitácoras y ajustes. Reporte posterior a cada visita.</div></div>
+  <p class="sub">Metodología con progresión clara paso a paso.</p>
+
+  <div class="vflow">
+    <div class="vstep">
+      <div class="vnum">1</div>
+      <div class="vtext"><b>Inspección</b><br>Levantamiento de información, especies, rutas de ingreso y riesgos.</div>
+    </div>
+    <div class="v-arrow"><span></span></div>
+
+    <div class="vstep">
+      <div class="vnum">2</div>
+      <div class="vtext"><b>Plan de Acción</b><br>Técnicas (físicas/químicas), productos, dosis y cronograma.</div>
+    </div>
+    <div class="v-arrow"><span></span></div>
+
+    <div class="vstep">
+      <div class="vnum">3</div>
+      <div class="vtext"><b>Ejecución Segura</b><br>Aplicación por técnicos certificados, señalización y tiempos de reingreso.</div>
+    </div>
+    <div class="v-arrow"><span></span></div>
+
+    <div class="vstep">
+      <div class="vnum">4</div>
+      <div class="vtext"><b>Seguimiento</b><br>Monitoreo con trampas, bitácoras y ajustes. Reporte posterior a cada visita.</div>
+    </div>
   </div>
 </section>
 
-<!-- PLAGAS (8) -->
+<!-- PLAGAS -->
 <section id="plagas">
   <h2 class="sec">Plagas que Controlamos</h2>
-  <p class="sub">Identificar bien la especie es clave para erradicarla. (Diseño 3 columnas en escritorio).</p>
-  <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:18px; max-width:1100px">
-    <div class="card"><h3><i class="fa-solid fa-bug"></i> Cucaracha Alemana</h3><p>Frecuente en cocinas; gel baits, trampas y saneamiento.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-spider"></i> Hormigas & Arañas</h3><p>Perimetrales y cebos específicos según especie.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-mosquito"></i> Mosquitos</h3><p>Control de criaderos, larvicidas y nebulización puntual.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-shield-dog"></i> Pulgas & Garrapatas</h3><p>Protocolos para mascotas y zonas de descanso.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-shield-virus"></i> Roedores</h3><p>Estaciones cebaderas, trampas mecánicas y sellado de accesos.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-tree"></i> Termitas</h3><p>Barreras químicas, perforación y seguimiento semestral.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-fish"></i> Moscas & Voladores</h3><p>Trampas de luz, saneamiento y manejo de residuos.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-bed"></i> Chinches de Cama</h3><p>Inspección minuciosa, tratamientos localizados y reingreso.</p></div>
+  <p class="sub">Diseño 100% responsivo — nada se sale en móvil.</p>
+  <div class="grid">
+    <div class="card"><h3><i class="fa-solid fa-bug"></i> Cucaracha Alemana</h3><p>Gel baits, trampas y saneamiento.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-spider"></i> Hormigas & Arañas</h3><p>Perimetrales y cebos específicos.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-mosquito"></i> Mosquitos</h3><p>Control de criaderos, larvicidas y nebulización.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-shield-dog"></i> Pulgas & Garrapatas</h3><p>Protocolos para mascotas.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-shield-virus"></i> Roedores</h3><p>Estaciones cebaderas y sellado de accesos.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-tree"></i> Termitas</h3><p>Barreras químicas y seguimiento.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-fish"></i> Moscas & Voladores</h3><p>Trampas de luz y saneamiento.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-bed"></i> Chinches de Cama</h3><p>Tratamientos localizados y reingreso.</p></div>
   </div>
 </section>
 
 <!-- PLANES -->
 <section id="planes">
   <h2 class="sec">Planes de Servicio</h2>
-  <p class="sub">Incluyen reporte técnico y recomendaciones. Precios referenciales; cotizamos según metraje, plaga y complejidad.</p>
+  <p class="sub">Incluyen reporte técnico y recomendaciones. Cotizamos según metraje, plaga y complejidad.</p>
   <div class="plans">
     <div class="plan">
       <h3><i class="fa-solid fa-sparkles"></i> Puntual</h3>
       <div class="price">Desde $45</div>
       <ul><li>Visita única + reporte</li><li>Reingreso recomendado 7–10 días</li><li>Ideal para eventos puntuales</li></ul>
-      <a class="btn gold" href="https://wa.me/50765127653?text=Cotizar%20servicio%20puntual%20de%20fumigaci%C3%B3n." target="_blank">Cotizar</a>
+      <a class="btn" style="background:linear-gradient(135deg,var(--dorado),var(--dorado-osc));color:#fff" href="https://wa.me/50765127653?text=Cotizar%20servicio%20puntual%20de%20fumigaci%C3%B3n." target="_blank">Cotizar</a>
     </div>
     <div class="plan best">
       <h3><i class="fa-solid fa-repeat"></i> Trimestral</h3>
       <div class="price">Desde $35/visita</div>
       <ul><li>4 visitas/año</li><li>Monitoreo y ajustes</li><li>Preferido por residencias y oficinas</li></ul>
-      <a class="btn gold" href="https://wa.me/50765127653?text=Cotizar%20plan%20trimestral%20de%20fumigaci%C3%B3n." target="_blank">Cotizar</a>
+      <a class="btn" style="background:linear-gradient(135deg,var(--dorado),var(--dorado-osc));color:#fff" href="https://wa.me/50765127653?text=Cotizar%20plan%20trimestral%20de%20fumigaci%C3%B3n." target="_blank">Cotizar</a>
     </div>
     <div class="plan">
       <h3><i class="fa-solid fa-calendar-check"></i> Mensual</h3>
       <div class="price">A medida</div>
       <ul><li>12 visitas/año</li><li>Exigido en industrias y restaurantes</li><li>Documentación para auditoría</li></ul>
-      <a class="btn gold" href="https://wa.me/50765127653?text=Cotizar%20plan%20mensual%20para%20comercio%20o%20industria." target="_blank">Cotizar</a>
+      <a class="btn" style="background:linear-gradient(135deg,var(--dorado),var(--dorado-osc));color:#fff" href="https://wa.me/50765127653?text=Cotizar%20plan%20mensual%20para%20comercio%20o%20industria." target="_blank">Cotizar</a>
     </div>
   </div>
 </section>
@@ -276,9 +337,46 @@
   <h2 class="sec">Certificaciones y Cumplimiento en Panamá</h2>
   <p class="sub">Técnicos acreditados, bioseguridad, MSDS/hojas de seguridad y registros de productos.</p>
   <div class="grid">
-    <div class="card"><h3><i class="fa-solid fa-certificate"></i> MINSA</h3><p>Productos permitidos y rotación de ingredientes activos para evitar resistencia.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-recycle"></i> AAUD</h3><p>Manejo seguro de envases y residuos, traslado y disposición responsable.</p></div>
-    <div class="card"><h3><i class="fa-solid fa-clipboard"></i> BPM / HACCP</h3><p>Mapas de trampas y bitácoras de consumo para auditorías.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-certificate"></i> MINSA</h3><p>Productos permitidos y rotación de ingredientes activos.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-recycle"></i> AAUD</h3><p>Manejo responsable de envases y residuos.</p></div>
+    <div class="card"><h3><i class="fa-solid fa-clipboard"></i> BPM / HACCP</h3><p>Mapas de trampas y bitácoras para auditorías.</p></div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <h2 class="sec">Galería de Trabajos</h2>
+  <p class="sub">Algunas intervenciones recientes en la ciudad.</p>
+  <div class="gallery">
+    <img src="galeria-1.jpg" alt="Trabajo 1">
+    <img src="galeria-2.jpg" alt="Trabajo 2">
+    <img src="galeria-3.jpg" alt="Trabajo 3">
+    <img src="galeria-4.jpg" alt="Trabajo 4">
+    <img src="galeria-5.jpg" alt="Trabajo 5">
+    <img src="galeria-6.jpg" alt="Trabajo 6">
+    <img src="galeria-7.jpg" alt="Trabajo 7">
+    <img src="galeria-8.jpg" alt="Trabajo 8">
+  </div>
+
+  <dialog class="gallery-view" id="viewer">
+    <div class="viewer">
+      <img id="viewerImg" src="" alt="Vista">
+      <button class="close-view" onclick="document.getElementById('viewer').close()">✕</button>
+    </div>
+  </dialog>
+</section>
+
+<!-- CLIENTES -->
+<section id="clientes">
+  <h2 class="sec">Algunos de Nuestros Clientes</h2>
+  <p class="sub">Gracias por confiar en Omnia Control Inc.</p>
+  <div class="clients">
+    <div class="client"><img src="cliente-1.png" alt="Cliente 1" onerror="this.outerHTML='<div class=\'client\'>Grupo Rivera</div>'"></div>
+    <div class="client"><img src="cliente-2.png" alt="Cliente 2" onerror="this.outerHTML='<div class=\'client\'>PH Costa Azul</div>'"></div>
+    <div class="client"><img src="cliente-3.png" alt="Cliente 3" onerror="this.outerHTML='<div class=\'client\'>Supermercado El Prado</div>'"></div>
+    <div class="client"><img src="cliente-4.png" alt="Cliente 4" onerror="this.outerHTML='<div class=\'client\'>Hotel Pacífico</div>'"></div>
+    <div class="client"><img src="cliente-5.png" alt="Cliente 5" onerror="this.outerHTML='<div class=\'client\'>Clínica Bella Vista</div>'"></div>
+    <div class="client"><img src="cliente-6.png" alt="Cliente 6" onerror="this.outerHTML='<div class=\'client\'>Bodega Tocumen</div>'"></div>
   </div>
 </section>
 
@@ -288,16 +386,16 @@
   <div class="grid">
     <div class="infoCard">
       <h3><i class="fa-solid fa-list-check"></i> Antes del servicio</h3>
-      <ul><li>Guardar utensilios y alimentos. Despejar zócalos y bajo fregaderos.</li><li>Mascotas fuera durante la aplicación y ventilación.</li><li>Indicar al técnico áreas de mayor actividad.</li></ul>
+      <ul><li>Guardar utensilios y alimentos; despejar zócalos.</li><li>Mascotas fuera durante la aplicación y ventilación.</li><li>Indicar áreas con mayor actividad.</li></ul>
     </div>
     <div class="infoCard">
       <h3><i class="fa-solid fa-broom"></i> Después del servicio</h3>
-      <ul><li>Ventilar 30–60 min o según indicación.</li><li>No limpiar zonas tratadas por 24–48 h.</li><li>Aplicar recomendaciones de sellado y saneamiento.</li></ul>
+      <ul><li>Ventilar 30–60 min o según indicación.</li><li>No limpiar zonas tratadas por 24–48 h.</li><li>Aplicar sellado y saneamiento sugerido.</li></ul>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIOS (6) -->
+<!-- TESTIMONIOS (8) -->
 <section>
   <h2 class="sec">Lo que dicen nuestros clientes</h2>
   <div class="grid">
@@ -307,20 +405,22 @@
     <div class="card"><p>“Controlaron roedores en bodega en dos visitas. Seguimiento excelente.”</p><b>— María Pérez, Bethania</b></div>
     <div class="card"><p>“Atención nocturna para no detener operaciones. Profesionales.”</p><b>— Carlos Herrera, El Cangrejo</b></div>
     <div class="card"><p>“El plan trimestral nos funciona perfecto para el PH. Buen precio/beneficio.”</p><b>— Daniela Castillo, Parque Lefevre</b></div>
+    <div class="card"><p>“La fumigación de contenedores quedó lista con su certificación. Coordinación puntual.”</p><b>— Ricardo Sánchez, Puerto de Balboa</b></div>
+    <div class="card"><p>“El reporte técnico y las recomendaciones fueron claras. Excelente servicio.”</p><b>— Gabriela Morales, Bella Vista</b></div>
   </div>
 </section>
 
-<!-- FAQ ampliado -->
+<!-- FAQ -->
 <section>
   <h2 class="sec">Preguntas Frecuentes</h2>
   <details><summary>¿Los productos son seguros?</summary><p>Usamos formulaciones aprobadas por autoridades panameñas y las dosis del fabricante. Indicamos tiempos de reingreso y ventilación.</p></details>
   <details><summary>¿Cuánto dura el servicio?</summary><p>Residencias: 45–90 min. En industrias depende del metraje y complejidad.</p></details>
-  <details><summary>¿Qué garantía ofrecen?</summary><p>Nuestros planes incluyen seguimiento y reingresos cuando corresponda según la plaga tratada.</p></details>
-  <details><summary>¿Atienden urgencias o fuera de horario?</summary><p>Sí, según agenda contamos con ventanas nocturnas y fines de semana.</p></details>
-  <details><summary>¿Qué debo preparar antes de la visita?</summary><p>Guardar alimentos/utensilios, despejar áreas, mantener mascotas fuera y señalar zonas con mayor actividad.</p></details>
-  <details><summary>¿Puedo solicitar solo control ecológico?</summary><p>Evaluamos la factibilidad según especie y nivel de infestación. Ofrecemos geles, trampas y exclusión.</p></details>
-  <details><summary>¿Emiten reportes para auditorías (BPM/HACCP)?</summary><p>Sí, entregamos reportes, mapas, MSDS y bitácoras de consumo y monitoreo.</p></details>
-  <details><summary>¿Cobertura en Panamá?</summary><p>Ciudad de Panamá y áreas cercanas. Consulta disponibilidad para el interior.</p></details>
+  <details><summary>¿Qué garantía ofrecen?</summary><p>Planes con seguimiento y reingresos según la plaga.</p></details>
+  <details><summary>¿Atienden urgencias o fuera de horario?</summary><p>Sí, contamos con ventanas nocturnas y fines de semana según agenda.</p></details>
+  <details><summary>¿Qué debo preparar antes de la visita?</summary><p>Guardar alimentos/utensilios, despejar áreas, mascotas fuera y señalar zonas con mayor actividad.</p></details>
+  <details><summary>¿Control ecológico?</summary><p>Ofrecemos geles, trampas y exclusión cuando la especie y el nivel lo permiten.</p></details>
+  <details><summary>¿Reportes para auditorías (BPM/HACCP)?</summary><p>Entregamos reportes, mapas, MSDS y bitácoras de consumo/monitoreo.</p></details>
+  <details><summary>¿Cobertura?</summary><p>Ciudad de Panamá y áreas cercanas.</p></details>
 </section>
 
 <!-- CONTACTO + FORM + MAP -->
@@ -376,10 +476,7 @@
       <p>Tel: <a href="tel:+50765127653">+507 6512-7653</a> · Instagram: <a href="https://instagram.com/omniacontrol" target="_blank">@omniacontrol</a></p>
       <p>Correo: <a href="mailto:info@omniacontrol.com">info@omniacontrol.com</a></p>
       <p class="hint">Av. José Agustín Arango 253-60, Ciudad de Panamá</p>
-
-      <!-- MAPA -->
       <div class="map-wrap" style="margin-top:12px">
-        <!-- Tu iframe de Google Maps -->
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d407.5282016268501!2d-79.41794295574275!3d9.066162467997703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fab550ee29d9811%3A0xeb106c0031a9d10e!2sAv.%20Jos%C3%A9%20Agust%C3%ADn%20Arango%20253-60%2C%20Panam%C3%A1%2C%20Provincia%20de%20Panam%C3%A1!5e1!3m2!1ses-419!2spa!4v1762183633312!5m2!1ses-419!2spa"
           width="100%" height="300" style="border:0;border-radius:12px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
@@ -398,7 +495,7 @@
     <div>
       <h3>Enlaces</h3>
       <p><a href="#servicios">Servicios</a> · <a href="#planes">Planes</a> · <a href="#cert">Certificaciones</a></p>
-      <p><a href="#contacto">Agendar visita</a> · <a href="https://instagram.com/omniacontrol" target="_blank">Instagram</a></p>
+      <p><a href="#galeria">Galería</a> · <a href="#clientes">Clientes</a> · <a href="#contacto">Agendar visita</a></p>
     </div>
     <div>
       <h3>Atención</h3>
@@ -410,10 +507,18 @@
   <div class="copy">© <span id="y"></span> Omnia Control Inc. — omniacontrol.com</div>
 </footer>
 
-<!-- JS: Form con selector (WhatsApp/Correo/Ambos) + animaciones -->
+<!-- JS -->
 <script>
+  // año en footer
   document.getElementById('y').textContent = new Date().getFullYear();
 
+  // menú móvil
+  const menuBtn = document.getElementById('menuBtn');
+  const menu = document.getElementById('menu');
+  menuBtn.addEventListener('click', ()=> menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>menu.classList.remove('open')));
+
+  // helpers formulario
   function buildMsg(d){
     return `Hola Omnia Control,%0AQuiero una cotización:%0A`+
       `Nombre: ${encodeURIComponent(d.nombre||'') }%0A`+
@@ -423,31 +528,33 @@
       `Sector: ${encodeURIComponent(d.sector||'') }%0A`+
       `Mensaje: ${encodeURIComponent(d.mensaje||'') }%0A`;
   }
-
   const form = document.getElementById('formCotiza');
   form.addEventListener('submit', e=>{
     e.preventDefault();
     const d = Object.fromEntries(new FormData(form).entries());
     const pref = (d.preferencia||'whatsapp').toLowerCase();
 
-    // WhatsApp
     if(pref==='whatsapp' || pref==='ambos'){
       const wa = `https://wa.me/50765127653?text=${buildMsg(d)}`;
       window.open(wa,'_blank');
     }
-
-    // Correo
     if(pref==='correo' || pref==='ambos'){
       const subject = encodeURIComponent('Solicitud de cotización — Omnia Control');
       const body = decodeURIComponent(buildMsg(d)).replaceAll('%0A','\n');
       window.location.href = `mailto:info@omniacontrol.com?subject=${subject}&body=${encodeURIComponent(body)}`;
     }
   });
+  document.getElementById('btnLimpiar').addEventListener('click', ()=>form.reset());
 
-  document.getElementById('btnLimpiar').addEventListener('click', ()=>{
-    form.reset();
+  // Galería (lightbox)
+  const viewer = document.getElementById('viewer');
+  const viewerImg = document.getElementById('viewerImg');
+  document.querySelectorAll('.gallery img').forEach(img=>{
+    img.addEventListener('click', ()=>{
+      viewerImg.src = img.src;
+      viewer.showModal();
+    });
   });
 </script>
-
 </body>
 </html>
