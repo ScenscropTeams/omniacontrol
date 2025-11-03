@@ -32,7 +32,32 @@
     .ig-head a{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
       color:#fff; padding:8px 12px; border-radius:999px; font-weight:700; text-decoration:none}
     .ig-head a i{margin-right:6px}
+    
+    /* ====== INSTAGRAM BADGE (simple y estable) ====== */
+    .ig-chip{
+      background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color:#fff;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 16px;
+      border-radius:999px;
+      text-decoration:none;       /* sin subrayado */
+      font-weight:800; line-height:1;
+      box-shadow:0 8px 20px rgba(0,0,0,.18);
+      transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .ig-chip:hover{ transform:translateY(-2px); filter:saturate(1.06); box-shadow:0 12px 28px rgba(0,0,0,.22); }
+    .ig-chip:active{ transform:translateY(1px) scale(.98); }
+    .ig-chip i{ font-size:18px; }
 
+    /* Opcional: botón flotante en móvil (aparece además del de la barra) */
+    @media (max-width:640px){
+      .ig-float{ position:fixed; bottom:82px; right:14px; z-index:60; }
+    }
+
+    /* Asegurar que NINGÚN botón/enlace se subraye */
+    a, .btn { text-decoration:none; }
+
+    
     /* HERO */
     .hero{position:relative; color:#fff; text-align:center;
       background:linear-gradient(110deg, rgba(179,2,2,.88), rgba(211,47,47,.88)), url('fumigacion-panama.jpg') center/cover no-repeat}
@@ -133,11 +158,12 @@
       <a href="#contacto">Contacto</a>
     </div>
     <div class="ig-head">
-      <a href="https://instagram.com/omniacontrol" target="_blank">
-        <i class="fa-brands fa-instagram"></i> @omniacontrol
+      <a class="ig-chip" href="https://instagram.com/omniacontrol" target="_blank" rel="noopener" aria-label="Instagram Omnia Control">
+        <i class="fa-brands fa-instagram"></i>
+        @omniacontrol
       </a>
-    </div>
-  </div>
+   </div>
+
 </div>
 
 <!-- HERO -->
