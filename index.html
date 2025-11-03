@@ -3,212 +3,256 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Omnia Control Inc. — Expertos en control y manejo integrado de plagas en Panamá. Protegemos tu industria, hogar y negocio con seguridad, confianza y garantía.">
-  <title>Omnia Control Inc. | Control y Manejo de Plagas en Panamá</title>
+  <meta name="description" content="Omnia Control Inc. - Empresa panameña certificada en control y manejo de plagas. Fumigación profesional para hogares, industrias y comercios en Ciudad de Panamá.">
+  <title>Omnia Control Inc. | Fumigación Profesional en Panamá</title>
   <link rel="icon" href="logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
-      background-color: #f9f9f9;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f8f8;
       color: #333;
+      scroll-behavior: smooth;
     }
-
     header {
-      background: linear-gradient(90deg, #a00, #d32f2f);
+      background: linear-gradient(90deg, #c10000, #d32f2f);
       color: #fff;
+      padding: 70px 20px;
       text-align: center;
-      padding: 40px 20px;
     }
     header img {
-      width: 120px;
+      width: 140px;
       margin-bottom: 10px;
     }
-    header h1 { font-size: 2rem; }
-    header p { font-size: 1rem; }
+    header h1 { font-size: 2.4rem; letter-spacing: 1px; }
+    header p { font-size: 1.1rem; opacity: 0.9; }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      color: #d32f2f;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #000; }
 
     section {
-      padding: 40px 20px;
-      max-width: 1000px;
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .hero h2 {
+      color: #d32f2f;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 800px;
       margin: auto;
     }
 
-    .intro {
-      text-align: center;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
     }
-    .intro p {
-      margin-top: 10px;
-      font-size: 1.1rem;
-    }
-
-    .valores, .servicios {
+    .card {
       background: #fff;
       border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin-top: 40px;
-      padding: 30px;
-    }
-
-    h2 {
-      color: #b71c1c;
+      padding: 25px;
       text-align: center;
-      margin-bottom: 20px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
     }
-
-    .valores-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      text-align: center;
-    }
-
-    .valor {
-      border: 2px solid #eee;
-      border-radius: 10px;
-      padding: 20px;
-      transition: all 0.3s ease;
-    }
-    .valor:hover {
-      border-color: #d32f2f;
-      transform: translateY(-3px);
-    }
-
-    .valor h3 {
+    .card:hover { transform: translateY(-5px); }
+    .card i {
+      font-size: 2.3rem;
       color: #d32f2f;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
+    .card h3 { color: #b71c1c; margin-bottom: 10px; }
 
-    .servicios ul {
-      list-style: none;
-      padding-left: 20px;
-    }
-    .servicios li {
-      margin-bottom: 10px;
+    .banner {
+      background: url('fumigacion-panama.jpg') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
       position: relative;
     }
-    .servicios li::before {
-      content: "✔";
-      color: #d32f2f;
+    .banner::after {
+      content: "";
+      background: rgba(0,0,0,0.6);
       position: absolute;
-      left: -20px;
-      top: 0;
+      inset: 0;
+    }
+    .banner h2 {
+      position: relative;
+      z-index: 2;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .banner p {
+      position: relative;
+      z-index: 2;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: auto;
     }
 
-    .elegirnos {
+    .contacto {
       text-align: center;
-      margin-top: 40px;
     }
-    .elegirnos ul {
-      list-style: none;
-      padding: 0;
+    .contacto p {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
     }
-    .elegirnos li {
-      background: #ffeaea;
-      border-left: 5px solid #d32f2f;
-      margin: 10px auto;
-      padding: 10px;
-      max-width: 600px;
+    .whatsapp {
+      display: inline-block;
+      background: #25d366;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
     }
+    .whatsapp:hover { background: #1ebd57; }
 
     footer {
       background: #a00;
       color: #fff;
       text-align: center;
-      padding: 30px 20px;
+      padding: 40px 20px;
     }
     footer a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
     }
-    .contacto {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin-top: 10px;
-      font-size: 1.1rem;
-    }
-    .contacto img {
-      width: 22px;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.5rem; }
-      .valor h3 { font-size: 1.1rem; }
+    footer p { opacity: 0.9; }
+
+    @media (max-width: 700px) {
+      header h1 { font-size: 1.8rem; }
+      .banner h2 { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="logo.png" alt="Logo Omnia Control Inc.">
+  <img src="logo.png" alt="Omnia Control Inc.">
   <h1>Omnia Control Inc.</h1>
-  <p>Seguridad, Confianza y Garantía</p>
+  <p>Control y manejo profesional de plagas en Panamá</p>
 </header>
 
-<section class="intro">
-  <p>Somos una empresa panameña especializada en el control y manejo integrado de plagas. Protegemos la industria alimentaria, hogares, hospitales, hoteles y más, asegurando espacios <strong>seguros y libres de plagas</strong>.</p>
+<nav>
+  <a href="#nosotros">Nosotros</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#certificaciones">Certificaciones</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
+<section id="nosotros" class="hero">
+  <h2>Expertos en Fumigación Certificada en Ciudad de Panamá</h2>
+  <p>Omnia Control Inc. es una empresa panameña con amplia experiencia en el control integral de plagas. Ofrecemos soluciones efectivas y seguras para <strong>hogares, industrias, restaurantes, hospitales, hoteles y comercios</strong>. Contamos con las certificaciones oficiales del <strong>Ministerio de Salud (MINSA)</strong> y la <strong>Autoridad de Aseo Urbano y Domiciliario (AAUD)</strong>, garantizando un servicio profesional y regulado.</p>
 </section>
 
-<section class="valores">
-  <h2>Nuestros Valores</h2>
-  <div class="valores-grid">
-    <div class="valor">
-      <h3>Seguridad</h3>
-      <p>Priorizamos la salud y bienestar de las personas, aplicando productos certificados y métodos seguros.</p>
+<section id="servicios">
+  <h2 style="text-align:center;color:#d32f2f;">Nuestros Servicios</h2>
+  <div class="grid">
+    <div class="card">
+      <i class="fa-solid fa-house"></i>
+      <h3>Fumigación Residencial</h3>
+      <p>Protege tu hogar contra cucarachas, hormigas, termitas, mosquitos, roedores y más. Aplicamos productos seguros y aprobados por el MINSA.</p>
     </div>
-    <div class="valor">
-      <h3>Calidad</h3>
-      <p>Utilizamos insumos de alta eficacia y personal altamente capacitado en control de plagas.</p>
+    <div class="card">
+      <i class="fa-solid fa-store"></i>
+      <h3>Control de Plagas en Comercios</h3>
+      <p>Ideal para supermercados, tiendas, restaurantes y bodegas. Cumple con las normas sanitarias exigidas en Panamá.</p>
     </div>
-    <div class="valor">
-      <h3>Confianza</h3>
-      <p>Nuestros clientes confían en la transparencia y responsabilidad de cada servicio que ofrecemos.</p>
+    <div class="card">
+      <i class="fa-solid fa-hospital"></i>
+      <h3>Áreas Sensibles</h3>
+      <p>Tratamientos especializados para hospitales, clínicas y laboratorios, garantizando la inocuidad y seguridad de cada ambiente.</p>
     </div>
-    <div class="valor">
-      <h3>Compromiso</h3>
-      <p>Brindamos atención personalizada y seguimiento continuo para garantizar resultados duraderos.</p>
+    <div class="card">
+      <i class="fa-solid fa-warehouse"></i>
+      <h3>Fumigación Industrial</h3>
+      <p>Soluciones para contenedores, granos almacenados, fábricas y plantas de producción. Protocolos certificados para auditorías sanitarias.</p>
     </div>
-    <div class="valor">
-      <h3>Garantía</h3>
-      <p>Todas nuestras soluciones están garantizadas y cumplen con permisos y certificaciones vigentes.</p>
+    <div class="card">
+      <i class="fa-solid fa-shield-halved"></i>
+      <h3>Manejo Integrado de Plagas</h3>
+      <p>Diagnóstico, prevención, control químico y seguimiento continuo con reportes técnicos detallados y trazables.</p>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-seedling"></i>
+      <h3>Control Ecológico</h3>
+      <p>Utilizamos productos biodegradables y técnicas de bajo impacto ambiental para proteger tu entorno y la salud de tu familia.</p>
     </div>
   </div>
 </section>
 
-<section class="servicios">
-  <h2>Servicios</h2>
-  <ul>
-    <li>Control de plagas en industria alimentaria: restaurantes, supermercados, tiendas, depósitos, plantas, barcos y aviones.</li>
-    <li>Fumigación en comercios, hogares y jardines.</li>
-    <li>Tratamientos en áreas sensibles como hospitales, clínicas y hoteles.</li>
-    <li>Fumigación en granos almacenados y contenedores.</li>
-    <li>Reportes técnicos claros, eficientes y oportunos.</li>
-  </ul>
+<section class="banner">
+  <h2>Comprometidos con la seguridad y la confianza</h2>
+  <p>Somos una empresa 100% panameña, registrada y autorizada para operar bajo las normas nacionales. Nuestro equipo está conformado por técnicos certificados y constantemente capacitados para ofrecerte un servicio eficaz y responsable.</p>
 </section>
 
-<section class="elegirnos">
-  <h2>¿Por qué elegirnos?</h2>
-  <ul>
-    <li>Seguimiento y atención personalizada.</li>
-    <li>Permisos y certificaciones vigentes.</li>
-    <li>Soluciones 100% efectivas y garantizadas.</li>
-    <li>Profesionales altamente calificados.</li>
-  </ul>
+<section id="certificaciones">
+  <h2 style="text-align:center;color:#d32f2f;">Certificaciones y Cumplimiento</h2>
+  <div class="grid">
+    <div class="card">
+      <i class="fa-solid fa-certificate"></i>
+      <h3>Certificados por el MINSA</h3>
+      <p>Contamos con todos los permisos y licencias requeridas por el Ministerio de Salud para el manejo y aplicación de plaguicidas.</p>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-recycle"></i>
+      <h3>Autorizados por la AAUD</h3>
+      <p>Seguimos los lineamientos ambientales de la Autoridad de Aseo Urbano y Domiciliario para el manejo responsable de residuos y químicos.</p>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-user-tie"></i>
+      <h3>Personal Capacitado</h3>
+      <p>Nuestros técnicos reciben formación constante en bioseguridad, uso de equipos especializados y nuevas tecnologías de control de plagas.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="contacto">
+  <h2 style="color:#d32f2f;">Contáctanos</h2>
+  <p>Atendemos en toda la Ciudad de Panamá y áreas aledañas. Agenda tu inspección hoy mismo.</p>
+  <a href="https://wa.me/50765127653" target="_blank" class="whatsapp">
+    <i class="fab fa-whatsapp"></i> Solicitar Cotización
+  </a>
+  <p style="margin-top:20px;">Teléfono: <strong>+507 6512-7653</strong></p>
+  <p>Correo: <a href="mailto:info@omniacontrol.com">info@omniacontrol.com</a></p>
 </section>
 
 <footer>
   <p><strong>Omnia Control Inc.</strong> – Seguridad, Confianza y Garantía.</p>
-  <div class="contacto">
-    <p><img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Map_marker_icon_%E2%80%93_Nicolas_Mollet_%E2%80%93_Location_%E2%80%93_Default.svg">Av. Domingo Díaz, Parque Industrial Las Olas, 18 ofc. 8-1</p>
-    <p><img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Phone_font_awesome.svg"> <a href="https://wa.me/50765127653" target="_blank">+507 6512-7653</a></p>
-    <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"> <a href="https://instagram.com/omniacontrol" target="_blank">@omniacontrol</a></p>
-  </div>
+  <p>Av. Domingo Díaz, Parque Industrial Las Olas, Of. 8-1, Ciudad de Panamá</p>
+  <p>Síguenos en <a href="https://instagram.com/omniacontrol" target="_blank">@omniacontrol</a></p>
   <p style="margin-top:15px;">© 2025 Omnia Control Inc. | Desarrollado por Solutech Panamá</p>
 </footer>
 
