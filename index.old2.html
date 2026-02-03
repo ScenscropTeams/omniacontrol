@@ -3,57 +3,211 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fumigación en Ciudad de Panamá | Control de Plagas Certificado – Omnia Control</title>
-  <meta name="description" content="Fumigación profesional y control de plagas en Ciudad de Panamá. Residencial, restaurantes, industrias y contenedores. Técnicos certificados, reportes sanitarios y atención rápida.">
-<link rel="canonical" href="https://omniacontrol.com/">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Omnia Control Inc.">
-<meta property="og:title" content="Fumigación en Ciudad de Panamá | Control de Plagas Certificado – Omnia Control">
-<meta property="og:description" content="Fumigación profesional y control de plagas en Ciudad de Panamá. Residencial, restaurantes, industrias y contenedores. Técnicos certificados, reportes sanitarios y atención rápida.">
-<meta property="og:url" content="https://omniacontrol.com/">
-<meta property="og:image" content="https://omniacontrol.com/logo.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fumigación en Ciudad de Panamá | Control de Plagas Certificado – Omnia Control">
-<meta name="twitter:description" content="Fumigación profesional y control de plagas en Ciudad de Panamá. Residencial, restaurantes, industrias y contenedores. Técnicos certificados, reportes sanitarios y atención rápida.">
-<meta name="twitter:image" content="https://omniacontrol.com/logo.png">
-<link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+  <title>Omnia Control Inc. | Fumigación Certificada en Ciudad de Panamá</title>
+  <meta name="description" content="Empresa certificada en control y manejo de plagas. Fumigación profesional para hogares, restaurantes, hoteles, hospitales, bodegas, plantas de alimentos, granos y contenedores en Ciudad de Panamá.">
+  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <link rel="stylesheet" href="/css/styles.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "PestControl",
-  "name": "Omnia Control Inc.",
-  "image": "https://omniacontrol.com/logo.png",
-  "url": "https://omniacontrol.com",
-  "telephone": "+50765127653",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Av. José Agustín Arango 253-60",
-    "addressLocality": "Ciudad de Panamá",
-    "addressCountry": "PA"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 9.063989,
-    "longitude": -79.418758
-  },
-  "areaServed": "Ciudad de Panamá",
-  "openingHours": "Mo-Sa 08:00-18:00",
-  "sameAs": [
-    "https://www.instagram.com/omniacontrol"
-  ]
-}
-</script>
+  <style>
+    :root{
+      --rojo:#d32f2f; --rojo-osc:#b71c1c;
+      --dorado:#d4a43a; --dorado-osc:#b08122;
+      --gris:#f5f6f7; --blanco:#fff; --osc:#1f1f1f;
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:Poppins,system-ui,Segoe UI,Roboto,sans-serif;background:var(--gris);color:#333;scroll-behavior:smooth}
 
+    /* =========== NAVBAR + MENU MÓVIL =========== */
+    .topbar{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96); border-bottom:1px solid #eee; backdrop-filter: blur(6px)}
+    .nav{max-width:1200px;margin:auto;display:flex;align-items:center;gap:12px;padding:10px 14px}
+    .nav img{height:40px}
+    .brand{font-weight:800;color:var(--rojo-osc);letter-spacing:.2px;white-space:nowrap}
+
+    .menu{display:flex;gap:14px;flex-wrap:wrap;margin-left:18px}
+    .menu a{color:var(--rojo-osc);text-decoration:none;font-weight:700}
+
+    .menu-btn{display:none; background:#fff; border:1px solid #eee; border-radius:10px; padding:8px 10px; cursor:pointer}
+    .menu-btn i{font-size:20px}
+
+    .ig-head{margin-left:auto}
+    .ig-chip{
+      background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color:#fff; display:inline-flex; align-items:center; gap:8px;
+      padding:10px 16px; border-radius:999px; text-decoration:none;
+      font-weight:800; line-height:1; box-shadow:0 8px 20px rgba(0,0,0,.18);
+      transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
+      max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .ig-chip:hover{ transform:translateY(-2px); filter:saturate(1.06); box-shadow:0 12px 28px rgba(0,0,0,.22)}
+    .ig-chip:active{ transform:translateY(1px) scale(.98)}
+    .ig-chip i{ font-size:18px }
+    .ig-inmenu{display:none}
+
+    @media (max-width: 900px){
+      .ig-head{display:none}
+      .menu-btn{display:inline-flex; margin-left:auto}
+      .menu{
+        position: fixed; left:0; right:0; top:64px;
+        background:#fff; border-top:1px solid #eee;
+        box-shadow:0 14px 30px rgba(0,0,0,.12);
+        display:none; flex-direction:column; gap:8px; padding:12px 14px; z-index:49;
+      }
+      .menu.open{display:flex}
+      .menu a{
+        background:#fff; border:1px solid #eee;
+        padding:12px 14px; border-radius:12px; color:var(--rojo-osc);
+      }
+      .ig-inmenu{display:inline-flex; margin-top:6px}
+      .ig-chip{ padding:9px 12px; font-size:.95rem }
+    }
+
+    /* =========== HERO =========== */
+    .hero{position:relative; color:#fff; text-align:center;
+      background:linear-gradient(110deg, rgba(179,2,2,.88), rgba(211,47,47,.88)), url('fumigacion-panama.jpg') center/cover no-repeat}
+    .hero .wrap{max-width:1100px;margin:auto;padding:20px 16px}
+    .mini-logo{height:150px; filter:drop-shadow(0 2px 6px rgba(0,0,0,.35)); opacity:.95}
+    .hero h1{font-size:clamp(26px,4vw,44px);margin:10px 0 8px}
+    .hero p{max-width:860px;margin:10px auto 24px;opacity:.98}
+
+    .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;border-radius:999px;
+      padding:12px 22px;font-weight:800;letter-spacing:.2px;text-decoration:none; user-select:none;
+      box-shadow:0 6px 14px rgba(0,0,0,.18); transition:transform .12s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(0,0,0,.22)}
+    .btn:active{transform:translateY(1px) scale(.98)}
+    .btn.wsp{background:#25d366;color:#fff}
+    .btn.out{background:transparent;color:#fff;border:1.8px solid rgba(255,255,255,.85)}
+    .badges{margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+    .badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);padding:8px 12px;border-radius:999px;font-size:.92rem;display:flex;align-items:center;gap:10px}
+
+    /* =========== SECTIONS =========== */
+    section{max-width:1200px;margin:0 auto;padding:56px 16px}
+    h2.sec{color:var(--rojo-osc);text-align:center;margin:0 0 16px}
+    p.sub{color:#555;text-align:center;max-width:900px;margin:0 auto 24px}
+
+    /* =========== CARDS GRID =========== */
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .card{background:var(--blanco);border-radius:var(--radius);padding:20px;box-shadow:0 8px 30px rgba(0,0,0,.06);transition:.25s transform,.25s border,.25s box-shadow}
+    .card:hover{transform:translateY(-5px); border:1px solid var(--dorado); box-shadow:0 14px 32px rgba(212,164,58,.22)}
+    .card .ico{font-size:26px;color:var(--rojo)}
+    .card h3{margin:10px 0;color:var(--rojo-osc)}
+    .card, .card h3{overflow-wrap:anywhere}
+
+    .pill{display:inline-block;background:#fff6e6;border-left:5px solid var(--dorado);padding:6px 10px;border-radius:10px;margin:8px 0}
+
+    /* =========== PROCESO VERTICAL FLECHAS =========== */
+    .vflow{max-width:900px;margin:0 auto}
+    .vstep{
+      display:grid; grid-template-columns:56px 1fr; gap:12px; align-items:flex-start;
+      background:#fff; border:1px solid #eee; border-radius:16px; padding:16px; position:relative;
+      box-shadow:0 8px 24px rgba(0,0,0,.05)
+    }
+    .vnum{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+      background:var(--dorado); color:#fff; font-weight:800}
+    .vstep:nth-child(odd) .vnum{background:var(--rojo)}
+    .vtext b{color:var(--rojo-osc)}
+    .v-arrow{display:grid; place-items:center; height:40px}
+    .v-arrow span{
+      width:04px; height:100%; background:linear-gradient(180deg,var(--dorado),var(--rojo));
+      position:relative; border-radius:999px; animation:flowDown 2.2s linear infinite; background-size:100% 200%;
+    }
+    .v-arrow span::after{
+      content:""; position:absolute; bottom:-1px; left:50%; transform:translateX(-50%);
+      border-left:8px solid transparent; border-right:8px solid transparent; border-top:10px solid var(--rojo);
+    }
+    @keyframes flowDown{0%{background-position:0 0}100%{background-position:0 200%}}
+
+    /* =========== PLANS =========== */
+    .plans{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .plan{background:#fff;border-radius:16px;padding:20px;border:2px solid #eee; transition:.25s}
+    .plan:hover{border-color:var(--dorado); box-shadow:0 10px 30px rgba(212,164,58,.18)}
+    .plan h3{margin:6px 0;color:var(--rojo-osc)}
+    .price{font-size:22px;font-weight:800;color:var(--rojo)}
+    .plan ul{padding-left:18px;margin:12px 0}
+    .plan li{margin:8px 0}
+    .best{border-color:var(--dorado)}
+
+    /* =========== FAQ =========== */
+    details{background:#fff;border-radius:12px;padding:14px 16px;margin:10px 0;border:1px solid #eee}
+    summary{cursor:pointer;font-weight:700;color:var(--rojo-osc)}
+    details[open]{border-color:var(--dorado)}
+    details p{margin-top:8px;color:#444}
+
+    /* =========== FORM =========== */
+    .formwrap{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
+    @media (max-width:920px){.formwrap{grid-template-columns:1fr}}
+    form{background:#fff;border-radius:18px;padding:20px;border:1px solid #eee}
+    label{display:block;font-weight:600;margin:10px 0 6px}
+    input,select,textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:12px;font:inherit}
+    textarea{min-height:110px;resize:vertical}
+    .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .hint{font-size:.9rem;color:#666}
+    .infoCard{background:#fff;border-radius:18px;padding:20px;border:1px solid #eee}
+    .formwrap .btn.out{ color:var(--rojo-osc); border-color:var(--rojo-osc); background:#fff }
+    .formwrap .btn.out:hover{ background:#fff3f3 }
+
+    /* =========== GALERÍA =========== */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px}
+    .gallery img{width:100%;aspect-ratio:1.3/1;object-fit:cover;border-radius:12px; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,.08)}
+    dialog.gallery-view{border:none;border-radius:14px;padding:0;max-width:min(92vw,960px)}
+    dialog::backdrop{background:rgba(0,0,0,.6)}
+    .viewer{position:relative}
+    .viewer img{width:100%;max-height:80vh;object-fit:contain;border-radius:14px}
+    .close-view{position:absolute;top:8px;right:8px;border:0;border-radius:999px;background:#fff;padding:8px 10px;cursor:pointer;font-weight:800}
+
+    /* =========== CLIENTES =========== */
+    .clients{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:18px;align-items:center}
+    .client{background:#fff;border:1px solid #eee;border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:center;min-height:80px}
+    .client img{max-height:40px; max-width:100%; object-fit:contain}
+
+    /* =========== MAP =========== */
+    .map-wrap{background:#fff;border-radius:18px;padding:10px;border:1px solid #eee}
+
+    /* =========== FOOTER =========== */
+    footer{background:var(--rojo-osc);color:#fff;margin-top:40px}
+    .foot{max-width:1200px;margin:auto;padding:30px 16px;display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:18px}
+    @media (max-width:860px){.foot{grid-template-columns:1fr}}
+    footer a{color:#fff;text-decoration:none}
+    .copy{background:#8a1717;text-align:center;padding:10px 14px;font-size:.92rem}
+  </style>
 </head>
 <body>
 
 <!-- NAV -->
-<div id="site-header"></div>
+<div class="topbar">
+  <div class="nav">
+    <img src="logo.png" alt="Omnia Control Inc.">
+    <div class="brand">Omnia Control Inc.</div>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="menu" id="menu">
+      <a href="#servicios">Servicios</a>
+      <a href="#industrias">Industrias</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#plagas">Plagas</a>
+      <a href="#planes">Planes</a>
+      <a href="#cert">Certificaciones</a>
+      <a href="#galeria">Galería</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#contacto">Contacto</a>
+      <a class="ig-chip ig-inmenu" href="https://instagram.com/omniacontrol" target="_blank" rel="noopener">
+        <i class="fa-brands fa-instagram"></i> @omniacontrol
+      </a>
+    </nav>
+
+    <div class="ig-head">
+      <a class="ig-chip" href="https://instagram.com/omniacontrol" target="_blank" rel="noopener">
+        <i class="fa-brands fa-instagram"></i> @omniacontrol
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -195,12 +349,12 @@
   <h2 class="sec">Galería de Trabajos</h2>
   <p class="sub">Algunas intervenciones recientes en la ciudad.</p>
   <div class="gallery">
-    <img src="galeria-1.jpg" alt="Galería de fumigación y control de plagas en Ciudad de Panamá - trabajo 1">
-    <img src="galeria-2.jpg" alt="Galería de fumigación y control de plagas en Ciudad de Panamá - trabajo 2">
-    <img src="galeria-3.jpg" alt="Galería de fumigación y control de plagas en Ciudad de Panamá - trabajo 3">
-    <img src="galeria-4.jpg" alt="Galería de fumigación y control de plagas en Ciudad de Panamá - trabajo 4">
-    <img src="galeria-5.jpg" alt="Galería de fumigación y control de plagas en Ciudad de Panamá - trabajo 5">
-    <img src="galeria-6.jpg" alt="Galería de fumigación y control de plagas en Ciudad de Panamá - trabajo 6">
+    <img src="galeria-1.jpg" alt="Trabajo 1">
+    <img src="galeria-2.jpg" alt="Trabajo 2">
+    <img src="galeria-3.jpg" alt="Trabajo 3">
+    <img src="galeria-4.jpg" alt="Trabajo 4">
+    <img src="galeria-5.jpg" alt="Trabajo 5">
+    <img src="galeria-6.jpg" alt="Trabajo 6">
 
   </div>
 
@@ -323,16 +477,84 @@
       <p>Correo: <a href="mailto:info@omniacontrol.com">info@omniacontrol.com</a></p>
       <p class="hint">Av. José Agustín Arango 253-60, Ciudad de Panamá</p>
       <div class="map-wrap" style="margin-top:12px">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.997516383635!2d-79.41875809586696!3d9.06398948659018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fab550e939648c1%3A0x6dce19652b564bf!2sParque%20Industrial%20Las%20Olas!5e0!3m2!1ses-419!2spa!4v1765315003050!5m2!1ses-419!2spa" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.997516383635!2d-79.41875809586696!3d9.06398948659018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fab550e939648c1%3A0x6dce19652b564bf!2sParque%20Industrial%20Las%20Olas!5e0!3m2!1ses-419!2spa!4v1765315003050!5m2!1ses-419!2spa" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<div id="site-footer"></div>
+<footer>
+  <div class="foot">
+    <div>
+      <h3>Omnia Control Inc.</h3>
+      <p>Seguridad, Confianza y Garantía.</p>
+      <p>Empresa panameña de control de plagas con técnicos certificados y programas de monitoreo continuo.</p>
+      <p><b>Protegemos tu salud y la de tu mascota</b></p>
+    </div>
+    <div>
+      <h3>Enlaces</h3>
+      <p><a href="#servicios">Servicios</a> · <a href="#planes">Planes</a> · <a href="#cert">Certificaciones</a></p>
+      <p><a href="#galeria">Galería</a> · <a href="#clientes">Clientes</a> · <a href="#contacto">Agendar visita</a></p>
+    </div>
+    <div>
+      <h3>Atención</h3>
+      <p>Lun–Sáb · 8:00–18:00</p>
+      <p><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/50765127653" target="_blank">+507 6512-7653</a></p>
+      <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@omniacontrol.com">info@omniacontrol.com</a></p>
+    </div>
+  </div>
+  <div class="copy">© <span id="y"></span> Omnia Control Inc. — omniacontrol.com</div>
+</footer>
 
 <!-- JS -->
-<script defer src="/js/main.js"></script>
+<script>
+  // año en footer
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // menú móvil
+  const menuBtn = document.getElementById('menuBtn');
+  const menu = document.getElementById('menu');
+  menuBtn.addEventListener('click', ()=> menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>menu.classList.remove('open')));
+
+  // helpers formulario
+  function buildMsg(d){
+    return `Hola Omnia Control,%0AQuiero una cotización:%0A`+
+      `Nombre: ${encodeURIComponent(d.nombre||'') }%0A`+
+      `Tel/WhatsApp: ${encodeURIComponent(d.telefono||'') }%0A`+
+      `Correo: ${encodeURIComponent(d.correo||'') }%0A`+
+      `Servicio: ${encodeURIComponent(d.servicio||'') }%0A`+
+      `Sector: ${encodeURIComponent(d.sector||'') }%0A`+
+      `Mensaje: ${encodeURIComponent(d.mensaje||'') }%0A`;
+  }
+  const form = document.getElementById('formCotiza');
+  form.addEventListener('submit', e=>{
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(form).entries());
+    const pref = (d.preferencia||'whatsapp').toLowerCase();
+
+    if(pref==='whatsapp' || pref==='ambos'){
+      const wa = `https://wa.me/50765127653?text=${buildMsg(d)}`;
+      window.open(wa,'_blank');
+    }
+    if(pref==='correo' || pref==='ambos'){
+      const subject = encodeURIComponent('Solicitud de cotización — Omnia Control');
+      const body = decodeURIComponent(buildMsg(d)).replaceAll('%0A','\n');
+      window.location.href = `mailto:info@omniacontrol.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+    }
+  });
+  document.getElementById('btnLimpiar').addEventListener('click', ()=>form.reset());
+
+  // Galería (lightbox)
+  const viewer = document.getElementById('viewer');
+  const viewerImg = document.getElementById('viewerImg');
+  document.querySelectorAll('.gallery img').forEach(img=>{
+    img.addEventListener('click', ()=>{
+      viewerImg.src = img.src;
+      viewer.showModal();
+    });
+  });
+</script>
 </body>
 </html>

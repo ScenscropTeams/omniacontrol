@@ -1,0 +1,451 @@
+:root{
+      --rojo:#d32f2f; --rojo-osc:#b71c1c;
+      --dorado:#d4a43a; --dorado-osc:#b08122;
+      --gris:#f5f6f7; --blanco:#fff; --osc:#1f1f1f;
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:Poppins,system-ui,Segoe UI,Roboto,sans-serif;background:var(--gris);color:#333;scroll-behavior:smooth}
+
+    /* =========== NAVBAR + MENU MÓVIL =========== */
+    .topbar{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96); border-bottom:1px solid #eee; backdrop-filter: blur(6px)}
+    .nav{max-width:1200px;margin:auto;display:flex;align-items:center;gap:12px;padding:10px 14px}
+    .nav img{height:40px}
+    .brand{font-weight:800;color:var(--rojo-osc);letter-spacing:.2px;white-space:nowrap}
+
+    .menu{display:flex;gap:14px;flex-wrap:wrap;margin-left:18px}
+    .menu a{color:var(--rojo-osc);text-decoration:none;font-weight:700}
+
+    .menu-btn{display:none; background:#fff; border:1px solid #eee; border-radius:10px; padding:8px 10px; cursor:pointer}
+    .menu-btn i{font-size:20px}
+
+    .ig-head{margin-left:auto}
+    .ig-chip{
+      background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
+      color:#fff; display:inline-flex; align-items:center; gap:8px;
+      padding:10px 16px; border-radius:999px; text-decoration:none;
+      font-weight:800; line-height:1; box-shadow:0 8px 20px rgba(0,0,0,.18);
+      transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
+      max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .ig-chip:hover{ transform:translateY(-2px); filter:saturate(1.06); box-shadow:0 12px 28px rgba(0,0,0,.22)}
+    .ig-chip:active{ transform:translateY(1px) scale(.98)}
+    .ig-chip i{ font-size:18px }
+    .ig-inmenu{display:none}
+
+    @media (max-width: 900px){
+      .ig-head{display:none}
+      .menu-btn{display:inline-flex; margin-left:auto}
+      .menu{
+        position: fixed; left:0; right:0; top:64px;
+        background:#fff; border-top:1px solid #eee;
+        box-shadow:0 14px 30px rgba(0,0,0,.12);
+        display:none; flex-direction:column; gap:8px; padding:12px 14px; z-index:49;
+      }
+      .menu.open{display:flex}
+      .menu a{
+        background:#fff; border:1px solid #eee;
+        padding:12px 14px; border-radius:12px; color:var(--rojo-osc);
+      }
+      .ig-inmenu{display:inline-flex; margin-top:6px}
+      .ig-chip{ padding:9px 12px; font-size:.95rem }
+    }
+
+    /* =========== HERO =========== */
+    .hero{position:relative; color:#fff; text-align:center;
+      background:linear-gradient(110deg, rgba(179,2,2,.88), rgba(211,47,47,.88)), url('fumigacion-panama.jpg') center/cover no-repeat}
+    .hero .wrap{max-width:1100px;margin:auto;padding:20px 16px}
+    .mini-logo{height:150px; filter:drop-shadow(0 2px 6px rgba(0,0,0,.35)); opacity:.95}
+    .hero h1{font-size:clamp(26px,4vw,44px);margin:10px 0 8px}
+    .hero p{max-width:860px;margin:10px auto 24px;opacity:.98}
+
+    .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;border-radius:999px;
+      padding:12px 22px;font-weight:800;letter-spacing:.2px;text-decoration:none; user-select:none;
+      box-shadow:0 6px 14px rgba(0,0,0,.18); transition:transform .12s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(0,0,0,.22)}
+    .btn:active{transform:translateY(1px) scale(.98)}
+    .btn.wsp{background:#25d366;color:#fff}
+    .btn.out{background:transparent;color:#fff;border:1.8px solid rgba(255,255,255,.85)}
+    .badges{margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+    .badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);padding:8px 12px;border-radius:999px;font-size:.92rem;display:flex;align-items:center;gap:10px}
+
+    /* =========== SECTIONS =========== */
+    section{max-width:1200px;margin:0 auto;padding:56px 16px}
+    h2.sec{color:var(--rojo-osc);text-align:center;margin:0 0 16px}
+    p.sub{color:#555;text-align:center;max-width:900px;margin:0 auto 24px}
+
+    /* =========== CARDS GRID =========== */
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .card{background:var(--blanco);border-radius:var(--radius);padding:20px;box-shadow:0 8px 30px rgba(0,0,0,.06);transition:.25s transform,.25s border,.25s box-shadow}
+    .card:hover{transform:translateY(-5px); border:1px solid var(--dorado); box-shadow:0 14px 32px rgba(212,164,58,.22)}
+    .card .ico{font-size:26px;color:var(--rojo)}
+    .card h3{margin:10px 0;color:var(--rojo-osc)}
+    .card, .card h3{overflow-wrap:anywhere}
+
+    .pill{display:inline-block;background:#fff6e6;border-left:5px solid var(--dorado);padding:6px 10px;border-radius:10px;margin:8px 0}
+
+    /* =========== PROCESO VERTICAL FLECHAS =========== */
+    .vflow{max-width:900px;margin:0 auto}
+    .vstep{
+      display:grid; grid-template-columns:56px 1fr; gap:12px; align-items:flex-start;
+      background:#fff; border:1px solid #eee; border-radius:16px; padding:16px; position:relative;
+      box-shadow:0 8px 24px rgba(0,0,0,.05)
+    }
+    .vnum{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+      background:var(--dorado); color:#fff; font-weight:800}
+    .vstep:nth-child(odd) .vnum{background:var(--rojo)}
+    .vtext b{color:var(--rojo-osc)}
+    .v-arrow{display:grid; place-items:center; height:40px}
+    .v-arrow span{
+      width:04px; height:100%; background:linear-gradient(180deg,var(--dorado),var(--rojo));
+      position:relative; border-radius:999px; animation:flowDown 2.2s linear infinite; background-size:100% 200%;
+    }
+    .v-arrow span::after{
+      content:""; position:absolute; bottom:-1px; left:50%; transform:translateX(-50%);
+      border-left:8px solid transparent; border-right:8px solid transparent; border-top:10px solid var(--rojo);
+    }
+    @keyframes flowDown{0%{background-position:0 0}100%{background-position:0 200%}}
+
+    /* =========== PLANS =========== */
+    .plans{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .plan{background:#fff;border-radius:16px;padding:20px;border:2px solid #eee; transition:.25s}
+    .plan:hover{border-color:var(--dorado); box-shadow:0 10px 30px rgba(212,164,58,.18)}
+    .plan h3{margin:6px 0;color:var(--rojo-osc)}
+    .price{font-size:22px;font-weight:800;color:var(--rojo)}
+    .plan ul{padding-left:18px;margin:12px 0}
+    .plan li{margin:8px 0}
+    .best{border-color:var(--dorado)}
+
+    /* =========== FAQ =========== */
+    details{background:#fff;border-radius:12px;padding:14px 16px;margin:10px 0;border:1px solid #eee}
+    summary{cursor:pointer;font-weight:700;color:var(--rojo-osc)}
+    details[open]{border-color:var(--dorado)}
+    details p{margin-top:8px;color:#444}
+
+    /* =========== FORM =========== */
+    .formwrap{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
+    @media (max-width:920px){.formwrap{grid-template-columns:1fr}}
+    form{background:#fff;border-radius:18px;padding:20px;border:1px solid #eee}
+    label{display:block;font-weight:600;margin:10px 0 6px}
+    input,select,textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:12px;font:inherit}
+    textarea{min-height:110px;resize:vertical}
+    .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .hint{font-size:.9rem;color:#666}
+    .infoCard{background:#fff;border-radius:18px;padding:20px;border:1px solid #eee}
+    .formwrap .btn.out{ color:var(--rojo-osc); border-color:var(--rojo-osc); background:#fff }
+    .formwrap .btn.out:hover{ background:#fff3f3 }
+
+    /* =========== GALERÍA =========== */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px}
+    .gallery img{width:100%;aspect-ratio:1.3/1;object-fit:cover;border-radius:12px; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,.08)}
+    dialog.gallery-view{border:none;border-radius:14px;padding:0;max-width:min(92vw,960px)}
+    dialog::backdrop{background:rgba(0,0,0,.6)}
+    .viewer{position:relative}
+    .viewer img{width:100%;max-height:80vh;object-fit:contain;border-radius:14px}
+    .close-view{position:absolute;top:8px;right:8px;border:0;border-radius:999px;background:#fff;padding:8px 10px;cursor:pointer;font-weight:800}
+
+    /* =========== CLIENTES =========== */
+    .clients{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:18px;align-items:center}
+    .client{background:#fff;border:1px solid #eee;border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:center;min-height:80px}
+    .client img{max-height:40px; max-width:100%; object-fit:contain}
+
+    /* =========== MAP =========== */
+    .map-wrap{background:#fff;border-radius:18px;padding:10px;border:1px solid #eee}
+
+    /* =========== FOOTER =========== */
+    footer{background:var(--rojo-osc);color:#fff;margin-top:40px}
+    .foot{max-width:1200px;margin:auto;padding:30px 16px;display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:18px}
+    @media (max-width:860px){.foot{grid-template-columns:1fr}}
+    footer a{color:#fff;text-decoration:none}
+    .copy{background:#8a1717;text-align:center;padding:10px 14px;font-size:.92rem}
+
+/* Service pages - linked cards should look like cards */
+a.card{display:block;color:inherit;text-decoration:none}
+a.card:hover{transform:translateY(-5px); border:1px solid var(--dorado); box-shadow:0 14px 32px rgba(212,164,58,.22)}
+/* Minor: improve focus */
+a:focus, button:focus, input:focus, select:focus, textarea:focus{outline:3px solid rgba(212,164,58,.35); outline-offset:2px}
+
+/* === Header partial improvements === */
+.brandlink{display:inline-flex;align-items:center;gap:10px;color:inherit;text-decoration:none}
+.nav .brandlink img{height:40px}
+
+/* Menu link styling consistency */
+.menu .nav-link{color:var(--rojo-osc);text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.menu .nav-item{display:inline-flex;align-items:center;position:relative}
+
+/* Submenu (desktop) */
+.submenu-btn{
+  background:transparent;border:0;padding:0;
+  color:var(--rojo-osc);font-weight:700;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.submenu-btn i{font-size:14px;opacity:.9}
+.submenu{
+  position:absolute;top:calc(100% + 10px);left:0;
+  min-width: 250px;
+  background:#fff;border:1px solid #eee;border-radius:14px;
+  box-shadow:0 14px 30px rgba(0,0,0,.12);
+  padding:8px;display:none;z-index:60;
+}
+.submenu a{
+  display:block;padding:10px 12px;border-radius:10px;
+  color:var(--rojo-osc);text-decoration:none;font-weight:700;
+}
+.submenu a:hover{background:#fff3f3}
+
+/* Hover open on desktop */
+@media (min-width: 901px){
+  .has-submenu.open .submenu{display:block}
+  .has-submenu:focus-within .submenu{display:block}
+}
+
+
+/* Mobile: submenu becomes collapsible block */
+@media (max-width: 900px){
+  .menu .nav-item{display:flex;flex-direction:column;align-items:stretch}
+  .submenu{
+    position:static;display:none;box-shadow:none;
+    border-radius:12px;border:1px solid #eee;margin-top:8px;
+  }
+  .has-submenu.open .submenu{display:block}
+  .submenu-btn{justify-content:space-between;padding:12px 14px;border-radius:12px;border:1px solid #eee;background:#fff}
+}
+
+/* Prevent long header wrapping weirdly on wide menus */
+.menu{align-items:center}
+
+
+/* === MOBILE FIXES + HEADER V2 === */
+/* Header layout (desktop) */
+.nav{justify-content:space-between}
+.menu{margin-left:18px; flex:1; display:flex; align-items:center; justify-content:center; gap:16px}
+.menu{flex-wrap:nowrap}
+.menu .nav-link, .submenu-btn{font-size:0.98rem}
+.brand{margin-right:6px}
+.ig-head{margin-left:12px}
+.brandlink, .brand{flex:0 0 auto}
+
+@media (max-width: 1100px) and (min-width: 901px){
+  .menu{flex-wrap:wrap; justify-content:flex-start}
+}
+
+/* Mobile: prevent horizontal overflow in contact section */
+#contacto, .formwrap, form, .infoCard, .map-wrap{max-width:100%}
+.formwrap{overflow-x:hidden}
+.infoCard{min-width:0}
+.map-wrap{padding:10px; overflow:hidden}
+.map-wrap iframe{width:100% !important; max-width:100% !important; height:320px !important; display:block; border:0}
+input, select, textarea{max-width:100%}
+.grid, .plans, .clients, .gallery{min-width:0}
+
+@media (max-width: 900px){
+  .nav{gap:10px}
+  .brand{font-size:1rem}
+  .menu{margin-left:0; justify-content:stretch}
+}
+
+.submenu{min-width:260px}
+.submenu a{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+/* === END MOBILE FIXES + HEADER V2 === */
+
+
+/* Brand combo (logo + texto) */
+.brand-combo{display:flex;align-items:center;gap:10px}
+.brand-combo img{height:40px;width:auto;display:block}
+.brand-text{font-weight:800;color:var(--rojo-osc);white-space:nowrap}
+
+/* Mobile: que no se rompa el layout */
+@media (max-width:900px){
+  .brand-text{font-size:1rem}
+  .brand-combo img{height:34px}
+  .nav{justify-content:space-between}
+}
+
+
+/* === MOBILE MENU CLEAN (NO BOTONES) === */
+@media (max-width: 900px){
+
+  /* Contenedor del menú */
+  .menu{
+    padding: 10px 12px;
+    gap: 4px;
+  }
+
+  /* Links normales */
+  .menu .nav-link{
+    border: none;
+    border-radius: 8px;
+    padding: 12px 10px;
+    background: transparent;
+    font-size: 1rem;
+  }
+
+  /* Hover / tap */
+  .menu .nav-link:active{
+    background:#fff3f3;
+  }
+
+  /* Items con submenu */
+  .menu .nav-item{
+    border-bottom: 1px solid #eee;
+    padding-bottom: 4px;
+  }
+
+  /* Botón que abre submenu */
+  .submenu-btn{
+    border: none;
+    background: transparent;
+    padding: 12px 10px;
+    font-size: 1rem;
+  }
+
+  /* Flecha más discreta */
+  .submenu-btn i{
+    font-size: 12px;
+    opacity: .7;
+  }
+
+  /* Submenu estilo lista */
+  .submenu{
+    border: none;
+    border-left: 2px solid var(--rojo);
+    margin: 4px 0 8px 10px;
+    padding: 4px 0;
+  }
+
+  .submenu a{
+    padding: 8px 10px;
+    font-size: .95rem;
+    font-weight: 600;
+    border-radius: 6px;
+  }
+
+  .submenu a:active{
+    background:#fff3f3;
+  }
+
+  /* Instagram dentro del menú */
+  .ig-inmenu{
+    margin-top: 12px;
+    justify-content: center;
+  }
+}
+
+
+
+@media (max-width: 900px){
+
+  /* Estado cerrado (pero listo para animar) */
+  .menu{
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: 72px; /* ajusta si hace falta */
+
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 16px 36px rgba(0,0,0,.12);
+    z-index: 999;
+
+    opacity: 0;
+    transform: translateY(-8px) scale(.98);
+    pointer-events: none;
+
+    transition: opacity .20s ease, transform .20s ease;
+  }
+
+  /* Estado abierto */
+  .menu.open{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+}
+
+
+/* === Animación suave para submenús en móvil === */
+@media (max-width: 900px){
+
+  /* Estado cerrado */
+  .submenu{
+    display: block; /* importante: no usar display:none */
+    max-height: 0;
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateY(-6px);
+
+    transition:
+      max-height .25s ease,
+      opacity .20s ease,
+      transform .20s ease;
+  }
+
+  /* Estado abierto */
+  .has-submenu.open > .submenu{
+    max-height: 500px; /* suficiente para varios items */
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* === Sticky header en móvil === */
+@media (max-width: 900px){
+  .topbar{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(0,0,0,.08);
+  }
+
+  /* Para que el menú desplegable quede pegado al header sticky */
+  .menu{
+    top: 72px; /* ajusta si tu header mide distinto */
+  }
+
+  /* Evita que los anchors queden escondidos debajo del header */
+  section, [id]{
+    scroll-margin-top: 92px;
+  }
+}
+
+
+@media (max-width: 900px){
+  .menu{
+    display:flex !important;
+    flex-direction:column;
+    gap:10px;
+
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    top: 72px;          /* ajusta a la altura real del topbar */
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:16px;
+    padding:12px;
+    box-shadow:0 16px 36px rgba(0,0,0,.12);
+    z-index: 999;
+
+    opacity:0;
+    transform: translateY(-8px) scale(.98);
+    pointer-events:none;
+    transition: opacity .20s ease, transform .20s ease;
+  }
+
+  .menu.open{
+    opacity:1;
+    transform: translateY(0) scale(1);
+    pointer-events:auto;
+  }
+}
